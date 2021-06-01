@@ -1,0 +1,108 @@
+﻿@model IEnumerable<jobs.Models.Job>
+
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    <!--  Layout = "~/Views/Shared/_Layout - nosides.cshtml";-->
+    Layout = "~/Views/Shared/_Layout - nosides.cshtml";
+    ViewData["Title"] = "Job Listings";
+}
+
+<section class="site-section">
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-md-7 text-center">
+                <h2 class="section-title mb-2">109,234 Jobs Listed</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="row align-items-center justify-content-center">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Search", "Jobs", FormMethod.Post, new { @class = "search-jobs-form" }))
+        {
+
+            <div class="row mb-5">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="class=" col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0"">
+                        <input class="form-control form-control-lg" placeholder="job title" name="Title">
+
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+
+                    <select name="Province" id="Province" class="form-control form-control-lg">
+                        <option value="">Select province</option>
+                        <option value="Western Cape">Western Cape</option>
+                        <option value="Eastern Cape">Eastern Cape</option>
+                        <option value="Northen Cape">Northen Cape</option>
+                        <option value="North West">North West</option>
+                        <option value="Freestate">Freestate</option>
+                        <option value="Kwazulu Natal">Kwazulu Natal</option>
+                        <option value="Gauteng">Gauteng</option>
+                        <option value="Limpopo">Limpopo</option>
+                        <option value="Mpumalanga">Mpumalanga</option>
+                    </select>
+
+
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+
+                    <select name="JobType" id="JobType" class="form-control form-control-lg">
+                        <option value="">Select work type</option>
+                        <option value="Full time">Full time</option>
+                        <option value="Part time">Part Time</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Temporary">Temporary</option>
+                    </select>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search Job</button>
+                </div>
+            </div>
+            <!-- forms closing goes here -->
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+@foreach (var item in Model)
+{
+    <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
+
+        <div class="col-md-4">
+            <span class="badge @item.badge px-2 py-1 mb-3">@item.Type</span>
+            <h2>
+                @Html.ActionLink(item.Title, "Details", "Jobs", new { id = item.Id })
+
+            </h2>
+            <p class="meta">Publisher: <strong>@item.businessProfile.Name</strong>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3>@item.Location</h3>
+
+        </div>
+        <div class="col-md-4 text-md-right">
+            <strong class="text-black">@item.SalaryRange</strong>
+        </div>
+
+
+    </div>
+}
+
+

@@ -1,0 +1,110 @@
+﻿@model jobs.Models.Profile
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Profile</h4>
+<hr />
+<div class="row">
+    <div class="col-md">
+        @using (Html.BeginForm("Edit", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(a => a.Picture)
+                @Html.TextBoxFor(a => a.Picture, new { @class = "form-control", type = "file" })
+                <div style="color: red">
+                    @Html.ValidationMessageFor(a => a.Picture)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(a => a.Surname)
+                @Html.TextBoxFor(a => a.Surname, new { @class = "form-control" })
+                <div style="color: red">
+                    @Html.ValidationMessageFor(a => a.Surname)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Name)
+                @Html.TextBoxFor(a => a.Name, new { @class = "form-control" })
+                <div style="color: red">
+                    @Html.ValidationMessageFor(a => a.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(a => a.Email)
+                @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
+                <div style="color: red">
+                    @Html.ValidationMessageFor(a => a.Email)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(a => a.Phone)
+                @Html.TextBoxFor(a => a.Phone, new { @class = "form-control" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(a => a.Website)
+                @Html.TextBoxFor(a => a.Website, new { @class = "form-control" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(a => a.Facebook)
+                @Html.TextBoxFor(a => a.Facebook, new { @class = "form-control" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(a => a.Twitter)
+                @Html.TextBoxFor(a => a.Twitter, new { @class = "form-control" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(a => a.ShortDescription)
+                @Html.TextBoxFor(a => a.ShortDescription, new { @class = "form-control" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.PersonalStatement)
+                @Html.TextAreaFor(a => a.PersonalStatement, new { @class = "form-control", rows = 3 })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.LookingFor)
+                @Html.TextAreaFor(a => a.LookingFor, new { @class = "form-control", rows = 3 })
+
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.SkillExpertise)
+                @Html.TextAreaFor(a => a.SkillExpertise, new { @class = "form-control", rows = 3 })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.WorkHistory)
+                @Html.TextAreaFor(a => a.WorkHistory, new { @class = "form-control", rows = 3 })
+
+            </div>
+
+         
+                <button type="submit" class="btn btn-primary">Submit</button>
+           
+
+        }
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

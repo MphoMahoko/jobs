@@ -1,0 +1,82 @@
+﻿@model IEnumerable<jobs.Models.JobProfile>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout - nosides.cshtml";
+    ViewData["Title"] = "Job applicants";
+}
+
+
+<section></section>
+
+
+
+<section class="ftco-section ftco-candidates ftco-candidates-2 bg-light">
+    <div class="container">
+
+      
+
+
+        <section class="site-section">
+          
+
+            <div class="container">
+                @if (ViewData["applicants"] == "none")
+                {
+                    <h2>You don't have applicants for this job</h2>
+                }
+                else 
+                {
+                    <div class="row mb-5">
+                        @foreach (var item in Model)
+                        {
+                           
+
+
+                            <div class="col-md-6 col-lg-4 mb-5">
+
+                                <div class="card" style="width: 18rem;">
+                                    <img src="~/propics/@item.Profile.Picture" class="card-img-top" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Profile.Name</h5>
+                                        <p class="card-text">@item.date.ToLongDateString() </p>
+                                        <a href="@Url.Action("Details", new {id = item.Profile.Id, jobid = item.JobId})" class="btn btn-primary">View profile</a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        }
+
+
+
+                    </div>
+                    <!--
+        <div class="row pagination-wrap mt-5">
+
+            <div class="col-md-12 text-center ">
+                <div class="custom-pagination ml-auto">
+                    <a href="#" class="prev">Previous</a>
+                    <div class="d-inline-block">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                    </div>
+                    <a href="#" class="next">Next</a>
+                </div>
+            </div>
+        </div>
+           -->
+                }
+            </div>
+            
+        </section>
+
+
+
+
+    </div>
+</section>
+

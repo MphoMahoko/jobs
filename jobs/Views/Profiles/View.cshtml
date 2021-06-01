@@ -1,0 +1,105 @@
+﻿@model IEnumerable<jobs.Models.JobProfile>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout - nosides.cshtml";
+}
+
+
+<section>
+
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form">
+        See Modal with Form
+    </button>
+
+
+    <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="email1">Email address</label>
+                            <input type="email" class="form-control" id="email1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password1">Password</label>
+                            <input type="password" class="form-control" id="password1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="password1">Confirm Password</label>
+                            <input type="password" class="form-control" id="password2" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    <div class="modal-footer border-top-0 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="ftco-section ftco-candidates ftco-candidates-2 bg-light">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="team d-md-flex">
+
+
+                        <a href="@Url.Action("Details", new {id = item.Profile.Id })">
+                            <div class="img"> <img height="200" width="200" class="rounded-circle" src="~/propics/@item.Profile.Picture" alt="Italian Trulli"></div>
+                        </a>
+                        <div class="text pl-md-4">
+                            <span class="location mb-0">@item.Profile.Twitter</span>
+                            <h2>@item.Profile.Name</h2>
+                            <span class="position">@item.Profile.PersonalStatement</span>
+                            <p>@item.Profile.PersonalStatement</p>
+                            <span class="seen">Last Activity 4 months ago</span>
+
+
+                            <p>
+                                                               @Html.ActionLink("Shortlist", "Send", "Messages", new { profileId = item.Profile.Id, jobId = ViewBag.jobId }, new { @class = "btn btn-primary" })
+                            </p>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            }
+
+
+
+
+        </div>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

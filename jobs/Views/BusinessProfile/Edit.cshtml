@@ -1,0 +1,80 @@
+﻿@model jobs.Models.BusinessProfile
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h4>Edit Business Profile</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        
+            @using (Html.BeginForm("Edit"))
+            {
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    @Html.HiddenFor(b=>b.Id)
+
+                    @Html.LabelFor(b=>b.Name)
+                    @Html.TextBoxFor(b=>b.Name)
+                    
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Phone)
+                    @Html.TextBoxFor(b => b.Phone)
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Industry)
+                    @Html.DropDownListFor(x => x.Industry, new List<SelectListItem>
+                   {
+                        new SelectListItem() {Text = "ICT", Value="ICT"},
+                        new SelectListItem() {Text = "Finance", Value="Finance"},
+                        new SelectListItem() {Text = "Sales", Value="Sales"},
+                        new SelectListItem() {Text = "Engineering", Value="Engineering"},
+                        new SelectListItem() {Text = "General", Value="General"}
+                   }, new {@class="form-control" })
+                    <span asp-validation-for="Industry" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Province)
+                    @Html.DropDownListFor(x => x.Province, new List<SelectListItem>
+                    {
+                          new SelectListItem() {Text = "Western Cape", Value="Western Cape"},
+                          new SelectListItem() {Text = "Eastern Cape", Value="Eastern Cape"},
+                          new SelectListItem() {Text = "Northern Cape", Value="Northern Cape"},
+                          new SelectListItem() {Text = "North West", Value="North West"},
+                          new SelectListItem() {Text = "Freestate", Value="Freestate"},
+                          new SelectListItem() {Text = "Kwazulu Natal", Value="Kwazulu Natal"},
+                          new SelectListItem() {Text = "Gauteng", Value="Gauteng"},
+                          new SelectListItem() {Text = "Limpopo", Value="Limpopo"},
+                          new SelectListItem() {Text = "Mpumalanga", Value="Mpumalanga"}
+                    }, new {@class="form-control" })
+                    <span asp-validation-for="Province" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(b => b.Website)
+                    @Html.TextBoxFor(b => b.Website)
+                    <span asp-validation-for="Website" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            }
+       
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back", "Single", "BusinessProfile")
+   
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

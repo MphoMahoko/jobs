@@ -1,0 +1,40 @@
+.bg-light {
+    background-color: #ffffff !important;
+}
+
+.my-5 {
+    margin-bottom: 0rem !important;
+}
+
+.border-top {
+    /* border-top: 1px solid #dee2e6 !important; */
+}
+
+.site-section {
+    /* padding-top: 7rem; */
+    padding-bottom: 0rem;
+    position: relative;
+    z-index: 2;
+}
+
+img {
+    /* vertical-align: middle; */
+    /* border-style: none; */
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+

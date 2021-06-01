@@ -1,0 +1,68 @@
+﻿@model IEnumerable<jobs.Models.JobProfile>
+
+@{
+    ViewData["Title"] = "Jobs applied for";
+    Layout = "~/Views/Shared/_Layout - nosides.cshtml";
+}
+
+
+<section class="site-section">
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-md-7 text-center">
+                <h2 class="section-title mb-2">@ViewData["numberOfJobs"] Applied Jobs</h2>
+            </div>
+        </div>
+
+        @if (ViewBag.jobs)
+        {
+            <div class="mb-5">
+                @foreach (var item in Model)
+                {
+                    <div class="row border-bottom job-item">
+                        <div class="col-sm">
+                            <span class="badge badge-primary px-2 py-1 mb-3"> @Html.DisplayFor(modelItem => item.Job.Type)</span>
+                            <h2> @Html.ActionLink(item.Job.Title, "Details", "Jobs", new { id = item.Job.Id })</h2>
+                            <p class="meta">Publisher: <strong>@item.Job.businessProfile.Name</strong> </p>
+                        </div>
+                        <div class="col-sm text-center">
+                            <h3> @Html.DisplayFor(modelItem => item.Job.Location)</h3>
+
+                        </div>
+                        <div class="col-sm text-md-right">
+                            <strong class="text-black">  @Html.DisplayFor(modelItem => item.Job.SalaryRange)</strong>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        }
+        else
+        {
+            <div class="mb-5">
+                <p>nigga you have no jobs</p>
+
+            </div>
+
+
+        }
+    </div>
+
+    <!--
+    <div class="row pagination-wrap">
+        <div class="col-md-6 text-center text-md-left">
+            <div class="custom-pagination ml-auto">
+                <a href="#" class="prev">Previous</a>
+                <div class="d-inline-block">
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                </div>
+                <a href="#" class="next">Next</a>
+            </div>
+        </div>
+    </div>
+        -->
+
+</section>

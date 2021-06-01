@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-jobs-FFCC6795-0674-4AAE-BAB7-1464FD76DED3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200921165551_AddPositionToInputModel.cs" />
+    <Compile Remove="Data\Migrations\20200921165551_AddPositionToInputModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201026093013_AddapplicationUserIdToJob.cs" />
+    <Compile Remove="Data\Migrations\20201026093013_AddapplicationUserIdToJob.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201101113347_AddIdsToForeignKeys.cs" />
+    <Compile Remove="Data\Migrations\20201101113347_AddIdsToForeignKeys.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201101115941_changeBrofileToProfile.cs" />
+    <Compile Remove="Data\Migrations\20201101115941_changeBrofileToProfile.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201124194019_AddedValidationToProperties.cs" />
+    <Compile Remove="Data\Migrations\20201124194019_AddedValidationToProperties.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210113115926_AddRequiredToBusinessProfile.cs" />
+    <Compile Remove="Data\Migrations\20210113115926_AddRequiredToBusinessProfile.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210113120703_AddRequiredToBusinessProfile.cs" />
+    <Compile Remove="Data\Migrations\20210113120703_AddRequiredToBusinessProfile.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jQuery.UI.Combined" Version="1.12.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
+  </ItemGroup>
+
+</Project>

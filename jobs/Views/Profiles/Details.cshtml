@@ -1,0 +1,230 @@
+﻿@model jobs.Models.Profile
+
+@{
+    ViewData["Title"] = "Profile Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+
+    
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            <h2>
+
+                @Html.DisplayFor(model => model.Email)
+            </h2>
+        </dt>
+
+        <dt>
+            <img height="200" width="200" class="img-thumbnail" src="~/propics/@Model.Picture" alt="Italian Trulli">
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        @if (Model.Website != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Website)
+            </dt>
+        }
+
+
+        <dd>
+            @Html.DisplayFor(model => model.Website)
+        </dd>
+
+
+        @if (Model.Facebook != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Facebook)
+            </dt>
+        }
+
+
+        <dd>
+            @Html.DisplayFor(model => model.Facebook)
+        </dd>
+
+
+        @if (Model.Twitter != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Twitter)
+            </dt>
+        }
+
+
+        <dd>
+            @Html.DisplayFor(model => model.Twitter)
+        </dd>
+
+
+        @if (Model.ShortDescription != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </dt>
+        }
+
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDescription)
+        </dd>
+
+
+
+        @if (Model.PersonalStatement != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.PersonalStatement)
+            </dt>
+        }
+
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonalStatement)
+        </dd>
+
+
+        @if (Model.LookingFor != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.LookingFor)
+            </dt>
+        }
+
+
+        <dd>
+            @Html.DisplayFor(model => model.LookingFor)
+        </dd>
+
+
+        @if (Model.SkillExpertise != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.SkillExpertise)
+            </dt>
+        }
+
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillExpertise)
+        </dd>
+
+
+        @if (Model.WorkHistory != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.WorkHistory)
+            </dt>
+        }
+
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkHistory)
+        </dd>
+
+     
+        @if (ViewData["Edit"].ToString() == "dont")
+        {
+            <a href="@Url.Action("Edit", "Profiles", new {id= Model.Id})" , class="btn btn-primary btn-lg">Edit</a>
+        }
+        else if (ViewData["Edit"].ToString() == "edit")
+        {
+           
+        }
+
+
+    </dl>
+</div>
+<div>
+    @if (ViewBag.admin == true)
+    {
+        <div class="col-md-6">
+            <div class="team d-md-flex">
+                <div class="text pl-md-4">
+                    <p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form">
+                            Send appointment
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Send appointment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+
+
+
+                @using (Html.BeginForm("Send", "Messages", new { id = Model.Id, jobid = ViewBag.jobid }, FormMethod.Post))
+                {
+                    <div class="modal-body">
+
+
+                        <input type="hidden" name="jobId" value="@ViewBag.jobId" />
+
+                        <div class="form-group">
+                            <label for="Location">Location</label>
+                            <input class="form-control" name="Location" id="Location" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="Date">Date</label>
+                            <input class="form-control" name="Date" type="date" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Time">Time</label>
+                            <input type="time" class="form-control" name="Time" />
+                        </div>
+
+                    </div>
+                    <div class="modal-footer border-top-0 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+
+</div>

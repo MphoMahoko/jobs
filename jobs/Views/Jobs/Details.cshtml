@@ -1,0 +1,151 @@
+﻿@model jobs.Models.Job
+
+@{
+    Layout = "~/Views/Shared/_Layout - nosides.cshtml";
+    ViewData["Title"] = "Job Details";
+}
+
+<!DOCTYPE html>
+
+<section class="site-section">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <div class="d-flex align-items-center">
+
+                    <div>
+                        <h2>@Model.Title</h2>
+                        <div>
+                            <span class="m-2"><span class="icon-room mr-2"></span> @Model.businessProfile.Name</span>
+                            <span class="m-2"><span class="icon-room mr-2"></span>@Model.Location</span>
+                            <span class="m-2">
+                                <span class="icon-clock-o mr-2"></span><span class="text-primary">
+                                    @Model.Type
+                                </span>
+                            </span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="row">
+
+                    <div class="col-6">
+                        @if (ViewBag.Applied == "true")
+                        {
+                        <button type="button" class="btn btn-primary" disabled>You've applied</button>
+                        }
+                        else if (ViewBag.Applied == "false")
+                        {
+                            using (Html.BeginForm("Apply", "Jobs", new { id = Model.Id }))
+                            {
+                                <input type="submit" value="Apply Now" class="btn btn-primary  py-2 px-5">
+
+                            }
+                        }
+                        else
+                        {
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (ViewBag.application == true)
+        {
+            <div class="alert alert-primary" role="alert">
+                Thank you for applying, please keep checking your mail
+            </div>
+        }
+
+        <div class="row">
+
+
+
+
+            <div class="col-lg-8">
+
+
+
+                <div class="mb-5">
+                    <h3 class="h5 d-flex align-items-center mb-4 text-primary">
+                        <span class="icon-align-left mr-3"></span>Job Description
+                    </h3>
+                    <p>
+                        @Model.Description
+                    </p>
+
+                </div>
+
+                @if (Model.Responsibilities != null)
+                {
+                    <div class="mb-5">
+                        <h3 class="h5 d-flex align-items-center mb-4 text-primary">
+                            <span class="icon-rocket mr-3"></span>Responsibilities
+                        </h3>
+                        @Model.Responsibilities
+                    </div>
+                }
+
+                @if (Model.EducationExperience != null)
+                {
+                    <div class="mb-5">
+                        <h3 class="h5 d-flex align-items-center mb-4 text-primary">
+                            <span class="icon-book mr-3"></span>Education +
+                            Experience
+                        </h3>
+                        @Model.EducationExperience
+                    </div>
+                }
+
+                @if (Model.Benefits != null)
+                {
+                    <div class="mb-5">
+                        <h3 class="h5 d-flex align-items-center mb-4 text-primary">
+                            <span class="icon-turned_in mr-3"></span>Other
+                            Benifits
+                        </h3>
+                        @Model.Benefits
+                    </div>
+                }
+
+                <div>
+                    @if (ViewBag.Applied == "owner")
+                    {
+                        <span class="ml-0 mr-2 mb-2">
+                            <span class="icon-briefcase mr-2"></span>
+                            @Html.ActionLink("Edit", "Edit", "Jobs", new { id = Model.Id })
+                        </span>
+                        <span class="ml-0 mr-2 mb-2">
+                            <span class="icon-briefcase mr-2"></span>
+                            @Html.ActionLink("Delete", "Delete", "Jobs", new { id = Model.Id })
+                        </span>
+                    }
+                </div>
+
+
+
+            </div>
+            <div class="col-lg-4">
+                <div class="bg-light p-3 border rounded mb-4">
+                    <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
+                    <ul class="list-unstyled pl-3 mb-0">
+                        <li class="mb-2"><strong class="text-black">Published on:</strong>@Model.PostDate.ToLongDateString()</li>
+                        <li class="mb-2"><strong class="text-black">Vacancy:</strong> 20</li>
+                        <li class="mb-2"><strong class="text-black">Employment Status:</strong>@Model.Type</li>
+                        <li class="mb-2"><strong class="text-black">Experience:</strong>@Model.ExperienceYears</li>
+                        <li class="mb-2"><strong class="text-black">Job Location:</strong>@Model.Location</li>
+                        <li class="mb-2"><strong class="text-black">Salary:</strong>@Model.SalaryRange</li>
+                        <li class="mb-2"><strong class="text-black">Gender:</strong> Any</li>
+                        <li class="mb-2"><strong class="text-black">Application Deadline:</strong>@Model.ExpiryDate.ToLongDateString()</li>
+                    </ul>
+                </div>
+
+        
+            </div>
+        </div>
+    </div>
+</section>

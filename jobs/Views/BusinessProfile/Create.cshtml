@@ -1,0 +1,78 @@
+﻿@model jobs.Models.BusinessProfile
+
+@{
+    ViewData["Title"] = "Create a business profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h4>BusinessProfile</h4>
+<hr />
+<div class="row">
+    <div class="col-md">
+        @using (Html.BeginForm("Create"))
+        {
+
+
+
+            @Html.HiddenFor(a => a.ApplicationUserId, new { Value = ViewBag.UserId })
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Name)
+                @Html.TextBoxFor(a => a.Name, new { @class = "form-control", placeholder = "O O Oros" })
+                @Html.ValidationMessageFor(a => a.Name, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Phone)
+                @Html.TextBoxFor(a => a.Phone, new { @class = "form-control", placeholder = "e.g. 011 880 0992" })
+                @Html.ValidationMessageFor(a => a.Phone, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Industry)
+                @Html.DropDownListFor(x => x.Industry, new List<SelectListItem>
+                {
+                     new SelectListItem() {Text = "ICT", Value="ICT"},
+                     new SelectListItem() {Text = "Finance", Value="Finance"},
+                     new SelectListItem() {Text = "Sales", Value="Sales"},
+                     new SelectListItem() {Text = "Engineering", Value="Engineering"},
+                     new SelectListItem() {Text = "General", Value="General"}
+                }, new {@class="form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Province)
+                @Html.DropDownListFor(x => x.Province, new List<SelectListItem>
+                {
+                      new SelectListItem() {Text = "Western Cape", Value="Western Cape"},
+                      new SelectListItem() {Text = "Eastern Cape", Value="Eastern Cape"},
+                      new SelectListItem() {Text = "Northern Cape", Value="Northern Cape"},
+                      new SelectListItem() {Text = "North West", Value="North West"},
+                      new SelectListItem() {Text = "Freestate", Value="Freestate"},
+                      new SelectListItem() {Text = "Kwazulu Natal", Value="Kwazulu Natal"},
+                      new SelectListItem() {Text = "Gauteng", Value="Gauteng"},
+                      new SelectListItem() {Text = "Limpopo", Value="Limpopo"},
+                      new SelectListItem() {Text = "Mpumalanga", Value="Mpumalanga"}
+                }, new {@class="form-control" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Website)
+                @Html.TextBoxFor(a => a.Website, new { @class = "form-control", placeholder = "O O Oros" })
+                @Html.ValidationMessageFor(a => a.Website, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+        }
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

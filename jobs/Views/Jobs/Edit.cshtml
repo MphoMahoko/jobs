@@ -1,0 +1,181 @@
+﻿@model jobs.Models.Job
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+@using (Html.BeginForm("Create"))
+{
+
+    <h2>Create</h2>
+    <div class="row form-group">
+        <div class="col-md-12 mb-3 mb-md-0">
+            <div class="col-md-12"><h3>@Html.LabelFor(l => l.Title)</h3></div>
+            @Html.TextBoxFor(a => a.Title, "", new { @class = "form-control", placeholder = "eg. Professional UI/UX Designer" })
+            <div style="color: red">
+                @Html.ValidationMessageFor(a => a.Title)
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row form-group">
+        <div class="col-md-12"><h3>Job Type</h3></div>
+        <div class="col-md-12 mb-3 mb-md-0">
+            <label for="option-job-type-1">
+                @Html.RadioButtonFor(a => a.Type, "Full time") Full Time
+
+            </label>
+        </div>
+        <div class="col-md-12 mb-3 mb-md-0">
+            <label for="option-job-type-2">
+                @Html.RadioButtonFor(a => a.Type, "Part time") Part Time
+
+            </label>
+        </div>
+        <div class="col-md-12 mb-3 mb-md-0">
+            <label for="option-job-type-3">
+                @Html.RadioButtonFor(a => a.Type, "Freelance") Freelance
+            </label>
+        </div>
+        <div class="col-md-12 mb-3 mb-md-0">
+            <label for="option-job-type-4">
+                @Html.RadioButtonFor(a => a.Type, "Internship") Internship
+            </label>
+        </div>
+        <div class="col-md-12 mb-3 mb-md-0">
+            <label for="option-job-type-4">
+                @Html.RadioButtonFor(a => a.Type, "Temporary") Termporary
+            </label>
+        </div>
+        <div style="color: red">
+            @Html.ValidationMessageFor(a => a.Type)
+        </div>
+    </div>
+
+    <div class="row form-group mb-4">
+        <div class="col-md-12"><h3>@Html.LabelFor(l => l.Location)</h3></div>
+        <div class="col-md-12 mb-3 mb-md-0">
+            @Html.DropDownListFor(x => x.Location, new List<SelectListItem>
+            {
+                         new SelectListItem() {Text = "Western Cape", Value="Western Cape"},
+                         new SelectListItem() {Text = "Eastern Cape", Value="Eastern Cape"},
+                         new SelectListItem() {Text = "Northern Cape", Value="Northern Cape"},
+                         new SelectListItem() {Text = "North West", Value="North West"},
+                         new SelectListItem() {Text = "Freestate", Value="Freestate"},
+                         new SelectListItem() {Text = "Kwazulu Natal", Value="Kwazulu Natal"},
+                         new SelectListItem() {Text = "Gauteng", Value="Gauteng"},
+                         new SelectListItem() {Text = "Limpopo", Value="Limpopo"},
+                         new SelectListItem() {Text = "Mpumalanga", Value="Mpumalanga"}
+            }, "Gauteng...", new { @class = "form-control" })
+            <div style="color: red">            @Html.ValidationMessageFor(a => a.Location)   </div>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12"><h3>@Html.LabelFor(l => l.Description)</h3></div>
+
+        <div class="col-md-12 mb-3 mb-md-0">
+            @Html.TextAreaFor(a => a.Description, 5, 5, new { @class = "form-control", placeholder = "Western City, UK" })
+            <div style="color: red">  @Html.ValidationMessageFor(a => a.Description) </div>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12"><h3>@Html.LabelFor(l => l.Responsibilities)</h3></div>
+
+        <div class="col-md-12 mb-3 mb-md-0">
+            @Html.TextAreaFor(a => a.Responsibilities, 5, 5, new { @class = "form-control", placeholder = "Changing things..." })
+            <div style="color: red">
+                @Html.ValidationMessageFor(a => a.Responsibilities)
+            </div>
+        </div>
+    </div>
+
+    <div class="row form-group mb-4">
+        <div class="col-md-12"><h3>@Html.LabelFor(l => l.ExperienceYears)</h3></div>
+        <div class="col-md-12 mb-3 mb-md-0">
+            @Html.DropDownListFor(x => x.ExperienceYears, new List<SelectListItem>
+            {
+                         new SelectListItem() {Text = "0 - 6 months", Value="0 - 6 months"},
+                         new SelectListItem() {Text = "6 months - 1 year", Value="6 months - 1 year"},
+                         new SelectListItem() {Text = "1 - 2 years", Value="1 - 2 years"},
+                         new SelectListItem() {Text = "2 - 5 years", Value="2 - 5 years"},
+                         new SelectListItem() {Text = "5+ years", Value="5+ years"},
+                         new SelectListItem() {Text = "10+ years", Value="10+ year"}
+
+            },"", new {@class="form-control" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12"><h3>@Html.LabelFor(l => l.EducationExperience)</h3></div>
+
+        <div class="col-md-12 mb-3 mb-md-0">
+            @Html.TextAreaFor(a => a.EducationExperience, 5, 5, new { @class = "form-control", placeholder = "Degree, diploma, etc..." })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12"><h3>@Html.LabelFor(l => l.Benefits)</h3></div>
+
+        <div class="col-md-12 mb-3 mb-md-0">
+            @Html.TextAreaFor(a => a.Benefits, 5, 5, new { @class = "form-control", placeholder = "Company car, medical aid, etc..." })
+        </div>
+    </div>
+
+    <div class="row form-group mb-4">
+        <div class="col-md-12"><h3>@Html.LabelFor(l => l.SalaryRange)</h3></div>
+        <div class="col-md-12 mb-3 mb-md-0">
+            @Html.DropDownListFor(x => x.SalaryRange, new List<SelectListItem>
+            {
+                         new SelectListItem() {Text = "R10 000.00 - R15 000.00", Value="R10 000.00 - R15 000.00"},
+                         new SelectListItem() {Text = "R15 000.00 - R25 000.00", Value="R15 000.00 - R25 000.00"},
+                         new SelectListItem() {Text = "R30 000.00 - R40 000.00", Value="R30 000.00 - R40 000.00"},
+                         new SelectListItem() {Text = "R45 000.00 - R60 000.00", Value="R45 000.00 - R60 000.00" }
+
+            },"", new {@class="form-control" })
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12"><h3>@Html.LabelFor(a => a.ExpiryDate)</h3></div>
+
+        <div class="col-md-12 mb-3 mb-md-0">
+            @Html.TextBoxFor(a => a.ExpiryDate, new { @class = "form-control datepicker", placeholder = "Western City, UK", type = "date" })
+            <div style="color: red">
+                @Html.ValidationMessageFor(a => a.ExpiryDate)
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row form-group">
+        <div class="col-md-12">
+            <input type="submit" value="Post" class="btn btn-primary  py-2 px-5">
+        </div>
+    </div>
+}
+
+
+
+
+<!-- jQuery UI CSS Reference -->
+
+<link href="~/css/jquery-ui.css" rel="stylesheet" />
+<link href="~/css/jquery-ui.theme.css" rel="stylesheet" />
+
+<!-- Required jQuery and jQuery UI Javascript references -->
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/jquery-ui.js"></script>
+
+
+
+
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker(); //Initialise any date pickers
+    });
+</script>
