@@ -15,11 +15,18 @@
     <div class="container">
         <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
-                <h2 class="section-title mb-2">109,234 Jobs Listed</h2>
+                <h2 class="section-title mb-2">@Model.Count() Jobs Listed</h2>
             </div>
         </div>
     </div>
 </section>
+
+@if (ViewData["sasa"] != null)
+{
+    <div class="alert alert-primary" role="alert">
+        Your email has been sent, we'll get back to you soon
+    </div>
+}
 
 
 
@@ -106,3 +113,19 @@
 }
 
 
+
+
+
+@section Scripts
+    {
+    <script>
+
+        
+
+        $(document).ready(function () {
+            $(".alert").fadeTo(3000, 500).slideUp(500, function () {
+                $(".alert").slideUp(500);
+            });
+        });
+    </script>
+}

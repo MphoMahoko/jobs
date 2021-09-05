@@ -82,9 +82,34 @@ namespace jobs.Controllers
             return View(jobs);
         }
 
+        // POST: Inboxes/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Send(Inbox inbox)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View(inbox);
+            }
+
+            _context.Inboxes.Add(inbox);
+            _context.SaveChanges();
+
+            TempData["sasa"]= 23;
+            ViewData["sasa"] = 23;
+
+            return View("Index", _context.Jobs.Include(j => j.businessProfile).Where(j => j.Available == true).ToList());
+            // return RedirectToAction("Index");
+
+        }
+
         public IActionResult Index()
         {
-            return View(_context.Jobs.Include(j => j.businessProfile).Where(j => j.Available == true).ToList());
+           
+            
+
+           return View(_context.Jobs.Include(j => j.businessProfile).Where(j => j.Available == true).ToList());
         }
 
         //[Authorize(Roles ="Administrator")]

@@ -25,11 +25,16 @@ else
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 @if (@UserManager.GetUserAsync(User).Result.Position == "Employer")
                 {
-                    @Html.ActionLink("Add a jobs", "Create", "Jobs","", new {@class="dropdown-item" })
+                    @Html.ActionLink("Add a jobs", "Create", "Jobs", "", new { @class = "dropdown-item" })
 
-                    @Html.ActionLink("Posted jobs", "PostedJobs", "Jobs","", new { @class = "dropdown-item" })
+                    @Html.ActionLink("Posted jobs", "PostedJobs", "Jobs", "", new { @class = "dropdown-item" })
 
                     @Html.ActionLink("Profile", "Single", "BusinessProfile", "", new { @class = "dropdown-item" })
+
+                    @if(@UserManager.GetUserAsync(User).Result.Email == "mpho.mahoko@gmail.com" )
+                    { 
+                        @Html.ActionLink("Inbox", "Index", "Inboxes", "", new { @class = "dropdown-item" })
+                    }
                 }
 
                 else
@@ -41,7 +46,7 @@ else
                     @Html.ActionLink("Inbox", "Index", "Messages", "", new { @class = "dropdown-item" })
                 }
                 <button type="submit" class="btn btn-link navbar-btn navbar-link dropdown-item">Logout</button>
-                
+
             </div>
         </li>
 

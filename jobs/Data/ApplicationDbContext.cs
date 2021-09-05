@@ -15,6 +15,7 @@ namespace jobs.Data
         public DbSet<BusinessProfile> BusinessProfiles { get; set; }
         public DbSet<JobProfile> JobProfiles { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Inbox> Inboxes { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -32,6 +33,6 @@ namespace jobs.Data
             builder.Entity<JobProfile>().HasOne(jp => jp.Job).WithMany(j => j.JobProfiles).HasForeignKey(jp => jp.JobId);
 
             builder.Entity<JobProfile>().HasOne(jp => jp.Profile).WithMany(p => p.JobProfiles).HasForeignKey(jp=>jp.ProfileId);
-        }
+             }
     } 
 }

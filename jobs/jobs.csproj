@@ -20,6 +20,8 @@
     <Compile Remove="Data\Migrations\20210113115926_AddRequiredToBusinessProfile.Designer.cs" />
     <Compile Remove="Data\Migrations\20210113120703_AddRequiredToBusinessProfile.cs" />
     <Compile Remove="Data\Migrations\20210113120703_AddRequiredToBusinessProfile.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210904193439_SeeRolesTable.cs" />
+    <Compile Remove="Data\Migrations\20210904193439_SeeRolesTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
